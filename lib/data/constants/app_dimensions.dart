@@ -1,3 +1,3 @@
-class AppDimentions {
-  static const mobileWidth = 480;
+class AppDimensions {
+  static const int mobileWidth = 480;
 }

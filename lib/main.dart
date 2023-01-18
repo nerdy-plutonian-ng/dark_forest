@@ -1,6 +1,10 @@
 import 'package:dark_forest/data/models/app_settings.dart';
 import 'package:dark_forest/data/persistence/settings_db_saver.dart';
 import 'package:dark_forest/domain/app_state/app_settings_state.dart';
+import 'package:dark_forest/domain/app_state/creatures_state.dart';
+import 'package:dark_forest/domain/app_state/game_state.dart';
+import 'package:dark_forest/domain/app_state/orbs_state.dart';
+import 'package:dark_forest/domain/app_state/player_state.dart';
 import 'package:dark_forest/ui/app_theme/color_schemes.g.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +18,18 @@ void main() async {
     providers: [
       ChangeNotifierProvider(
         create: (_) => AppSettingsState(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => PlayerState(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => CreaturesState(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => OrbsState(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => GameState(),
       ),
     ],
     child: DarkForest(
@@ -46,6 +62,7 @@ class _DarkForestState extends State<DarkForest> {
       routerConfig: routerConfig,
       theme: ThemeData(
           useMaterial3: true,
+          fontFamily: 'Quicksand',
           colorScheme: Provider.of<AppSettingsState>(
             context,
           ).appSettings.isDarkModeOn

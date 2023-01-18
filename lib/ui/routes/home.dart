@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Row(
           children: [
-            if (deviceWidth > AppDimentions.mobileWidth)
+            if (deviceWidth > AppDimensions.mobileWidth)
               NavigationRail(
                 extended: true,
                 destinations: appNavigation
@@ -45,11 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   });
                 },
               ),
-            Expanded(flex: 2, child: tabs[currentIndex])
+            Expanded(flex: 2, child: tabs[currentIndex]),
           ],
         ),
       ),
-      bottomNavigationBar: deviceWidth <= AppDimentions.mobileWidth
+      bottomNavigationBar: deviceWidth <= AppDimensions.mobileWidth
           ? BottomNavigationBar(
               currentIndex: currentIndex,
               selectedItemColor: Theme.of(context).colorScheme.primary,

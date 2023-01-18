@@ -1,4 +1,5 @@
 import 'package:dark_forest/data/constants/route_paths.dart';
+import 'package:dark_forest/ui/routes/game.dart';
 import 'package:go_router/go_router.dart';
 
 import 'home.dart';
@@ -8,10 +9,14 @@ final routerConfig = GoRouter(
     GoRoute(
       path: RoutePaths.root,
       name: RoutePaths.root,
-      builder: (context, routerState) {
-        return const HomeScreen();
-      },
-      routes: [],
+      builder: (context, routerState) => const HomeScreen(),
+      routes: [
+        GoRoute(
+          path: RoutePaths.game,
+          name: RoutePaths.game,
+          builder: (_, __) => const GameScreen(),
+        )
+      ],
     ),
   ],
 );
