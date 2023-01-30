@@ -1,5 +1,10 @@
+import 'package:dark_forest/data/cheat_code.dart';
 import 'package:dark_forest/data/models/orb.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../data/app_enums/statuses.dart';
+import '../../../domain/app_state/game_state.dart';
 
 class InGameOrbs extends StatelessWidget {
   const InGameOrbs({Key? key, required this.selectedOrbs}) : super(key: key);
@@ -7,17 +12,24 @@ class InGameOrbs extends StatelessWidget {
   final Set<Orb> selectedOrbs;
 
   selectOrb(BuildContext context, Orb selectedOrb) async {
-    // final gameState = Provider.of<GameState>(context, listen: false);
-    // gameState.setGameBusyState(true);
-    // gameState.addDisplayText('Player used ${selectedOrb['name']}');
-    // await Future.delayed(const Duration(seconds: 1));
-    // var damage = (selectedOrb['damage'] as int);
-    // if (selectedOrb['cure'] == Afflictions.none) {
-    // } else {
-    //   gameState.addDisplayText(
-    //       'Player used ${(selectedOrb['cure'] as Afflictions).name}');
-    //   await Future.delayed(const Duration(seconds: 1));
-    // }
+    final gameState = Provider.of<GameState>(context, listen: false);
+    gameState.setGameBusyState(true);
+    gameState.addDisplayText('Player used ${selectedOrb.name}');
+    await Future.delayed(const Duration(seconds: 1));
+    if (selectedOrb.cure != Afflictions.none) {
+      gameState.addDisplayText('Player used ${selectedOrb.name}');
+      await Future.delayed(const Duration(seconds: 1));
+      gameState.removePlayerStatus(selectedOrb);
+    } else {
+      var damage = selectedOrb.damage;
+      final monsterType = weaknessChart.entries
+          .firstWhere((element) => element.key == gameState.monster!.type);
+      final isMonsterWeakAgainst = monsterType.value.contains(selectedOrb.type);
+      if (isMonsterWeakAgainst) {
+        damage += ((30 / 100) * selectedOrb.damage).toInt();
+        print('weak against');
+      } else {}
+    }
     // gameState.updateMonster(
     //     'hitPoints',
     //     (gameState.monster['hitPoints'] as int) -

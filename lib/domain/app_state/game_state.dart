@@ -29,6 +29,16 @@ class GameState with ChangeNotifier {
     this.player = player;
   }
 
+  removePlayerStatus(Orb orb) {
+    if (player!.statuses.contains(orb.cure)) {
+      player!.statuses.remove(orb.cure);
+      displayTexts.add('${orb.cure.name} healed!');
+    } else {
+      displayTexts.add('${orb.name} has no effect.');
+    }
+    notifyListeners();
+  }
+
   late Set<Orb>? selectedOrbs;
 
   addOrbs(Set<Orb> selectedOrbs) {
