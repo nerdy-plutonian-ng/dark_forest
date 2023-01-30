@@ -7,10 +7,11 @@ class Orb {
   final String id;
   final String name;
   final String description;
-  final List<Elements> type;
-  final Statuses cure;
+  final Elements type;
+  final Afflictions cure;
   final Color color;
   final int turns;
+  final int damage;
 
   const Orb({
     required this.id,
@@ -20,5 +21,6 @@ class Orb {
     required this.color,
     required this.cure,
     required this.turns,
+    required this.damage,
   });
 }

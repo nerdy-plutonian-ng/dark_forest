@@ -5,13 +5,18 @@ import 'package:flutter/foundation.dart';
 class PlayerState with ChangeNotifier {
   var player = Player();
 
-  alterHitPoints(int points) {
+  takeDamage(int points) {
     player.hitPoints -= points;
     notifyListeners();
   }
 
-  alterStatuses(Statuses status, bool shouldAdd) {
+  alterStatuses(Afflictions status, bool shouldAdd) {
     shouldAdd ? player.statuses.add(status) : player.statuses.remove(status);
+    notifyListeners();
+  }
+
+  reset() {
+    player = Player();
     notifyListeners();
   }
 }

@@ -50,23 +50,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: deviceWidth <= AppDimensions.mobileWidth
-          ? BottomNavigationBar(
-              currentIndex: currentIndex,
-              selectedItemColor: Theme.of(context).colorScheme.primary,
-              unselectedItemColor: Theme.of(context).colorScheme.onBackground,
-              showUnselectedLabels: true,
-              items: appNavigation
-                  .map((e) => BottomNavigationBarItem(
-                        label: e.name,
-                        icon: Icon(e.iconData),
-                      ))
-                  .toList(),
-              onTap: (index) {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
-            )
+          ?
+      NavigationBar(
+          selectedIndex: currentIndex,
+          onDestinationSelected: (index){
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          destinations: appNavigation.map((e) => NavigationDestination(icon: Icon(e.iconData), label: e.name)).toList(),)
           : null,
     );
   }

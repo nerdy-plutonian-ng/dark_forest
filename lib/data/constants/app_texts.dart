@@ -1,9 +1,12 @@
 class AppTexts {
-  static const intro = 'Magical creatures in your wildest dreams live here. '
-      'Not all magical beings are good though, these creatures want to be the end of you.'
-      '\n\n'
-      'Are you ready for the history books? Will you brave the Dark Forest and emerge unscathed?'
-      '\n\n'
-      'Pick up 5 equally magical orbs to help you overcome whatever you encounter.'
-      ' Choose carefully but what you need most is luck!';
+  static const top =
+      'In the big village of Wuram exists a small forest. Every 100'
+      ' days a monster is born in the forest. It\'s sole purpose is to destroy the village.';
+  static const mid =
+      'However anyone who ventures into the Dark Forest summons the next'
+      ' monster prematurely and by defeating it postpones the next attack by a year.';
+  static const bottom =
+      'It is tradition for brave villagers to venture into the forest'
+      ' to defeat a monster. As a native are you brave? How many years of peace can you '
+      'gift your village?';
 }

@@ -35,7 +35,23 @@ class PlayWidget extends StatelessWidget {
                 height: 16,
               ),
               Text(
-                AppTexts.intro,
+                AppTexts.top,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Text(
+                AppTexts.mid,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Text(
+                AppTexts.bottom,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
@@ -45,9 +61,9 @@ class PlayWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton.icon(
+                  FilledButton.icon(
                       onPressed: () {
-                        context.pushNamed(RoutePaths.game);
+                        context.pushNamed(RoutePaths.selectOrbs);
                       },
                       icon: const Icon(Icons.play_circle_outline),
                       label: const Text('Play')),

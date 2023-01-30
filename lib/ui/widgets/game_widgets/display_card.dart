@@ -20,7 +20,8 @@ class DisplayCard extends StatelessWidget {
             child: Center(
               child: Text(
                 gameState.displayTexts.last,
-                style: Theme.of(context).textTheme.titleMedium,
+                style: Theme.of(context).textTheme.titleLarge,
+                textAlign: TextAlign.center,
               ),
             )),
       ));

@@ -1,13 +1,9 @@
+import 'package:dark_forest/data/models/monster.dart';
+import 'package:dark_forest/data/models/orb.dart';
+import 'package:dark_forest/data/models/player.dart';
 import 'package:flutter/foundation.dart';
 
 class GameState with ChangeNotifier {
-  bool hasGameStarted = false;
-
-  setGameState(bool state) {
-    hasGameStarted = state;
-    notifyListeners();
-  }
-
   bool isBusy = true;
 
   setGameBusyState(bool state) {
@@ -15,12 +11,43 @@ class GameState with ChangeNotifier {
     notifyListeners();
   }
 
-  final displayTexts = [
-    'Let\'s Go!!!',
-  ];
+  final displayTexts = [];
 
   addDisplayText(String text) {
     displayTexts.add(text);
     notifyListeners();
+  }
+
+  Monster? monster;
+
+  setMonster(Monster monster) {
+    this.monster = monster;
+  }
+
+  Player? player;
+  setPlayer(Player player) {
+    this.player = player;
+  }
+
+  late Set<Orb>? selectedOrbs;
+
+  addOrbs(Set<Orb> selectedOrbs) {
+    this.selectedOrbs = selectedOrbs;
+  }
+
+  bool isGameOver = false;
+
+  updateGameOver(bool isGameOver) {
+    this.isGameOver = isGameOver;
+    notifyListeners();
+  }
+
+  reset() {
+    isBusy = true;
+    displayTexts.clear();
+    isGameOver = false;
+    selectedOrbs = null;
+    monster = null;
+    player = null;
   }
 }

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:dark_forest/data/orbs.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import '../../data/models/orb.dart';
 
@@ -25,9 +26,14 @@ class OrbsState with ChangeNotifier {
 
   Set<int> _generateRandomIndices() {
     final indices = <int>{};
-    while (indices.length < 3) {
+    while (indices.length < 1) {
       indices.add(Random().nextInt(orbs.length));
     }
     return indices;
+  }
+
+  reset() {
+    selectedOrbs.clear();
+    notifyListeners();
   }
 }
